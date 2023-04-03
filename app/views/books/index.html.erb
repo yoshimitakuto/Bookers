@@ -1,2 +1,32 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<!--投稿一覧機能-->
+<h1>Books</h1>
+
+<table>
+  <tr>
+    <th>title</th><th>body</th><ht></ht>
+  </tr>
+
+  <tr>
+    <td>入門git</td>
+    <td>入門専用の学習用の本です</td>
+    <td><a href= "/">Show</a></td>
+    <td><a href= "/">Edit</a></td>
+    <td><a href= "/">Destroy</a></td>
+  </tr>
+</table>
+
+<!--新規投稿機能-->
+<h2>New books</h2>
+
+<%= form_with model:Book.new do |f| %>
+
+ <label>Title</label>
+  <%= f.text_field:title %>
+
+ <label>Body</label>
+  <%= f.text_area:body %>
+
+<%= f.submit 'Create book' %>
+
+<% end %>
+

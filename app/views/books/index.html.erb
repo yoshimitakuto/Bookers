@@ -29,22 +29,54 @@
 <!--新規投稿機能-->
 <h2 class="create-header">New books</h2>
 
-<%= form_with model: @book do |f| %>
+<% if @book.errors.any? %>
+ <div class="errors-section">
+  <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
+  <ul>
+   <% @book.errors.full_messages.each do |messages| %>
+   <li><%= messages %></li>
+   <% end %>
+  </ul> 
+ </div>
+<% end %>
 
+<%= form_with model: @book do |f| %>
+<% if !@book.errors.any? %>
 <div class="field">
- <div class="field-item">
+ <div class="field-header">
   <label>Title</label>
  </div>
+ <div class="field-text">
    <%= f.text_field:title %>
+ </div>
+</div>
+ <div class="field">
+  <div class="field-header">
+   <label>Body</label>
+  </div>
+  <div class="field-text">
+   <%= f.text_area:body %>
+  </div>
+</div>
+ <% else %>
+ <div class="field">
+ <div class="field-error-header">
+  <label>Title</label>
+ </div>
+ <div class="field-error-text">
+   <%= f.text_field:title %>
+ </div>
 </div>
 
  <div class="field">
- <div class="field-item">
-  <label>Body</label>
- </div>
+  <div class="field-error-header">
+   <label>Body</label>
+  </div>
+  <div class="field-error-text">
    <%= f.text_area:body %>
+  </div>
 </div>
-
+<% end %>
  <div class="submit">
   <%= f.submit 'Create book' %>
  </div>

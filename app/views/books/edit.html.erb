@@ -1,21 +1,53 @@
 <h1 class="edit-header">Editing Book</h1>
 
+<% if @book.errors.any? %>
+ <div class="errors-section">
+  <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
+   <ul>
+    <% @book.errors.full_messages.each do |messages| %>
+    <li><%= messages %></li>
+    <% end %>
+   </ul> 
+ </div>  
+<% end %>
+
 <%= form_with model: @book, url:book_update_path(@book.id), method: :patch do |edit_book| %>
 
+<% if !@book.errors.any? %>
  <div class="field">
- <div class="field-item">
-  <label>Title</label>
- </div>
+  <div class="field-header">
+   <label>Title</label>
+  </div>
+  <div class="field-text">
    <%= edit_book.text_field:title %>
+  </div>
  </div>
-
- <div class="field">
- <div class="field-item">
-  <label>Body</label>
- </div>
+  <div class="field">
+  <div class="field-header">
+   <label>Body</label>
+  </div>
+  <div class="field-text">
    <%= edit_book.text_area:body %>
+  </div>
  </div>
-
+ <% else %>
+ <div class="field">
+  <div class="field-error-header">
+   <label>Title</label>
+  </div>
+  <div class="field-error-text">
+   <%= edit_book.text_field:title %>
+  </div>
+ </div>
+ <div class="field">
+  <div class="field-error-header">
+   <label>Body</label>
+  </div>
+  <div class="field-error-text">
+   <%= edit_book.text_area:body %>
+  </div>
+ </div>
+<% end %>
  <div class="edit-submit">
   <%= edit_book.submit 'Update Book' %>
  </div>

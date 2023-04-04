@@ -66,3 +66,8 @@ input[type="submit"]{
 .edit-submit{
  margin-bottom:10px;
 }
+
+.flash-text{
+ color:green;
+ margin:33px;
+}

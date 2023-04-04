@@ -1,13 +1,15 @@
 <!--投稿一覧機能-->
 <h1 class="index-header">Books</h1>
 
-<% @books.reverse_each do |book| %>
+
 <table>
   <thead>
   <tr>
     <th>Title</th><th>Body</th><th colspan="3"></th>
   </tr>
   </thead>
+  
+   <% @books.reverse_each do |book| %>
 
     <tr>
      <td><%= book.title %></td>
@@ -16,9 +18,10 @@
      <td><%= link_to "Edit", book_edit_path(book.id) %></td>
      <td><%= link_to "Destroy", book_destroy_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
     </tr>
+   <% end %>
 
 </table>
-<% end %>
+
 
 <!--新規投稿機能-->
 <h2 class="create-header">New books</h2>
@@ -42,5 +45,6 @@
  <div class="submit">
   <%= f.submit 'Create book' %>
  </div>
+ 
 <% end %>
 

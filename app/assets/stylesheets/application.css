@@ -37,7 +37,7 @@ a:hover{
  color:#FFF;
 }
 
-.index-header{
+.index-header,.edit-header{
  padding-bottom:18px;
 }
 
@@ -60,5 +60,9 @@ td{
 }
 
 input[type="submit"]{
- padding:0 5px;
+ padding:1px 6px;
+}
+
+.edit-submit{
+ margin-bottom:10px;
 }

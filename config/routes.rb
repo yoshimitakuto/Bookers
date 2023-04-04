@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   #ルートパス設定完了（4/3 18:00）
-  get '/' => 'homes#top'
+  root :to => 'homes#top'
   # resources:books
   # get '/books' => 'books#new'
   post '/books' => 'books#create'
   get '/books' => 'books#index'
   get '/books/:id' => 'books#show', as: 'book'
-  get '/books/:id/edit' => 'books#edit', as: 'book_edit'
+  get '/books/:id/edit' => 'books#edit', as: 'edit_book'
   patch '/books/:id' => 'books#update', as: 'book_update'
   delete '/books/:id' => 'books#destroy', as: 'book_destroy'
 
